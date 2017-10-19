@@ -58,10 +58,6 @@ def show_melon(melon_id):
 def show_shopping_cart():
     """Display content of shopping cart."""
 
-    # TODO: Display the contents of the shopping cart.
-
-    # The logic here will be something like:
-    #
     # - get the cart dictionary from the session
     cart = session['cart']
 
@@ -77,13 +73,12 @@ def show_shopping_cart():
         melon_obj = melons.get_by_id(melon)
         #price is attribute of melon object
         price = melon_obj.price
-        #getting quantity from sessions['cart'], convert from strto int
+        #getting quantity from sessions['cart'], convert from str to int
         #assigning attribute quantity to melon object
         melon_obj.quantity = int(cart[melon])
         melon_obj.total_cost = price * melon_obj.quantity
         total_melon_cost += melon_obj.total_cost
         melon_items.append(melon_obj)
-    print melon_items
 
     # - loop over the cart dictionary, and for each melon id:
     #    - get the corresponding Melon object
@@ -101,7 +96,6 @@ def show_shopping_cart():
                                         total_melons_cost=total_melon_cost)
 
 
-
 @app.route("/add_to_cart/<melon_id>")
 def add_to_cart(melon_id):
     """Add a melon to cart and redirect to shopping cart page.
@@ -110,10 +104,6 @@ def add_to_cart(melon_id):
     page and display a confirmation message: 'Melon successfully added to
     cart'."""
 
-    # TODO: Finish shopping cart functionality
-
-    # The logic here should be something like:
-    #
     # - check if a "cart" exists in the session, and create one (an empty
     #   dictionary keyed to the string "cart") if not
     if 'cart' not in session:
